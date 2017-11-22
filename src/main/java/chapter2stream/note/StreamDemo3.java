@@ -27,6 +27,7 @@ public class StreamDemo3 {
                         },
                         TreeMap::new)
         );
+        Person person = collect.get(1);
         System.out.println(collect);
     }
     /**

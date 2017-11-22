@@ -37,3 +37,73 @@ Optional.ofNullable(obj);
 
 ```
 ### 聚合操作
+
+# 第三章、使用lambda编程
+
+## 3.1 延迟执行
+
+​	本章学习的目的是通过创建你自己的库来使用lambda编程
+
+`lambda表达式的特点`  只有在需要的时候才运行代码
+
+```java
+/**
+     *
+     * @param logger
+     * @param message
+     */
+    public static void info(Logger logger, Supplier<String> message){
+        if (logger.isInfoEnabled()){
+            logger.info(message.get());
+        }
+    }
+```
+
+## 3.2 lambda 表达式的参数
+
+```java
+
+
+import java.util.function.IntConsumer;
+
+/**
+ * @author yjq14
+ */
+public class RepeatDemo {
+    /**
+     * 重复执行代码n次
+     * 为什么要使用 IntConsumer 而不是runnable
+     * 需要用到用户提供的参数
+     * @param n
+     * @param action
+     */
+    public static void repeat(int n, IntConsumer action){
+        for (int i = 0; i <n ; i++) {
+            action.accept(i);
+        }
+    }
+
+    /**
+     * 无参数的版本
+     * @param n
+     * @param run
+     */
+    public static void repeat2(int n, Runnable run){
+        for (int i = 0; i < n; i++) {
+            run.run();
+        }
+    }
+
+    public static void main(String[] args) {
+        RepeatDemo.repeat(10, i-> System.out.println("countDown: " + (9-i)));
+        RepeatDemo.repeat2(10, () -> System.out.println("hello,world!"));
+    }
+}
+```
+
+## 3.3 选择一个函数式接口
+
+不同的类型选择不同的接口
+
+## 3.4 返回函数
+

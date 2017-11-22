@@ -28,6 +28,5 @@ public class Exercise_1 {
         for (Integer a:arrs) {
             System.out.println(a);
         }
-
     }
 }

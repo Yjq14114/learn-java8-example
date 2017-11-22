@@ -10,6 +10,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.System.out;
+
 /**
  * @author yjq14
  */
@@ -28,13 +30,13 @@ public class Exercise_1 {
         long count = words.stream().filter(w -> w.length() >= 12).count();
         long endtime = System.nanoTime();
         long costTime = (endtime - begintime) / 1000;
-        System.out.println("count:"+costTime);
+        out.println("count:"+costTime);
         long begintime1= System.nanoTime();
 // 正文
         long parallel = words.parallelStream().filter(w -> w.length() >= 12).count();
         long endtime1 = System.nanoTime();
         long costTime1 = (endtime - begintime) / 1000;
-        System.out.println("parallel:"+costTime1);
+        out.println("parallel:"+costTime1);
     }
     public static void getForCurrent() throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
@@ -42,13 +44,13 @@ public class Exercise_1 {
         for (String w :
                 words) {
             Thread thread = new Thread(() -> {
-                System.out.println(w);
+                out.println(w);
             });
             thread.start();
         }
 //        System.out.println(count);
-    }
 
+}
     public static void main(String[] args) throws IOException {
 //        Exercise_1.getContents();
         Exercise_1.getForCurrent();

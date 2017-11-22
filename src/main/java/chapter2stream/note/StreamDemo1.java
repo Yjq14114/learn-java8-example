@@ -1,6 +1,5 @@
 package chapter2stream.note;
 
-import com.sun.xml.internal.ws.resources.StreamingMessages;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -8,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamDemo1 {

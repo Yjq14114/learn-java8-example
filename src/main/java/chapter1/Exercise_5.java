@@ -13,9 +13,12 @@ public class Exercise_5 {
 //                System.out.println(b);
 //            }
 //        });
-        Thread thread = new Thread(()-> {
-            b++;System.out.println(b);
-        });
+        Thread thread = new Thread(Exercise_5::run);
         thread.start();
+    }
+
+    private static void run() {
+        b++;
+        System.out.println(b);
     }
 }

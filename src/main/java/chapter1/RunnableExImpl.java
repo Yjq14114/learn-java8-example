@@ -5,8 +5,9 @@ import java.util.concurrent.Callable;
 /**
  * Created by yjq14 on 2017/3/13.
  */
-public class RunnableExImpl {
-    public static Runnable unCheck(RunnableEx runnableEx) {
+public class RunnableExImpl implements RunnableInterface{
+    @Override
+    public  Runnable unCheck(RunnableEx runnableEx) {
         return () -> {
             try {
                 runnableEx.run();
@@ -18,7 +19,8 @@ public class RunnableExImpl {
         };
     }
 
-    public static Runnable unCheckWithCallable(Callable callable) {
+    @Override
+    public Runnable unCheckWithCallable(Callable callable) {
         return () -> {
             try {
                 callable.call();

@@ -8,7 +8,7 @@ package chapter1;
 public class Exercise_6{
 
     public static void main(String[] args){
-        RunnableExImpl runnableEx = new RunnableExImpl();
+        RunnableInterface runnableEx = new RunnableExImpl();
         Thread thread = new Thread(()-> {
             System.out.println("zzz");
             try {

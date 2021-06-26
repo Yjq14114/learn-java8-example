@@ -7,13 +7,24 @@ import java.util.stream.Stream;
 
 public class JavaMoney {
     public static void main(String[] args) {
+        // T 是String类型  R 是Integer类型
         Function<String, Integer> func = String::length;
-        Function<List<String>, Integer> func2 = List::size;
-        // 计算某个字符串的长度
-        Integer apply = func.apply("yangjiaqi");
-        List<String> collect = Stream.of("yang", "jia", "qi").collect(Collectors.toList());
-        Integer apply1 = func2.apply(collect);
-        System.out.println(apply);
-        System.out.println(apply1);
+        // T 是Integer类型  R 是Integer类型
+        Function<Integer, Integer> func2 = x-> x*x;
+        // andThen 方法 先求出fun的值，然后把fun的值作为入参传给func2
+        Integer hello = func.andThen(func2).apply("hello");
+        System.out.println(hello);
+        Function<String,Integer> fun3 = String::length;
+        Function<String,String> fun4 = String::toLowerCase;
+        // compose 方法 fun3是以fun4的返回值作为入参来进行计算
+        Integer billie = fun3.compose(fun4).apply("billie");
+        String str = "billie";
+        System.out.println(str.hashCode());
+        System.out.println(billie);
+
+        Function<String, String> identity = Function.identity();
+        String hello1 = identity.apply("hello");
+        System.out.println(hello1);
     }
+
 }

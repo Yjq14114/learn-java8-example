@@ -15,12 +15,8 @@ public class Java8BiFunction2b {
                 Math::pow,
                 (r) -> "result: " + r);
         System.out.println(s);
-
         String convert = convert(2, 4, Math::multiplyExact, r -> "Multiply: " + r);
         System.out.println(convert);
-
-
-
     }
 
     public static <R> R powToString(Integer a1, Integer a2,
